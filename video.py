@@ -3,8 +3,12 @@ from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
 import cv2
 from functions import *
+<<<<<<< Updated upstream
 import json
 import requests
+=======
+import random
+>>>>>>> Stashed changes
 
 class Video:
     def __init__(self):
@@ -45,11 +49,17 @@ class Video:
 
         #or tune parameters otherwise
 
+<<<<<<< Updated upstream
+=======
+        num = 1
+
+>>>>>>> Stashed changes
         while cap.isOpened():
             ret, frame = cap.read()
             image = cv2.flip(frame, 1)
             image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
             image = mp.Image(image_format=mp.ImageFormat.SRGB, data=image)
+<<<<<<< Updated upstream
             
             face_landmarker_result = self.face_landmarker.detect(image)
             pose_landmarker_result = self.pose_landmarker.detect(image)
@@ -58,6 +68,17 @@ class Video:
             image2 = draw_landmarks_on_image_body(image.numpy_view(), pose_landmarker_result)
 
             image = cv2.addWeighted(image1, 0.5, image2, 0.5, 0)
+=======
+
+            face_landmarker_result = self.face_landmarker.detect(image)
+            # pose_landmarker_result = self.pose_landmarker.detect(image)
+
+            image1 = draw_landmarks_on_image_face(image.numpy_view(), face_landmarker_result)
+            #image2 = draw_landmarks_on_image_body(image.numpy_view(), pose_landmarker_result)
+
+            image = cv2.addWeighted(image1, 0.5, image1, 0.5, 0)
+            #instead of image = cv2.addWeighted(image1, 0.5, image2, 0.5, 0)
+>>>>>>> Stashed changes
 
             image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
 
@@ -74,17 +95,27 @@ class Video:
             #color = (0, 0, 255)
             #yes_point = (240, 360)
             #no_point = (900, 360)
+<<<<<<< Updated upstream
             #font = cv2.FONT_HERSHEY_SIMPLEX
 
             #cv2.putText(image, 'YES', yes_point, font, 3, color, 3, cv2.LINE_AA)
 
             #cv2.putText(image, 'NO', no_point, font, 3, color, 3, cv2.LINE_AA)
             
+=======
+            font = cv2.FONT_HERSHEY_SIMPLEX
+
+            #cv2.putText(image, 'YES', yes_point, font, 3, color, 3, cv2.LINE_AA)
+
+            #cv2.putText(image, 'NO', no_point, font, 3, color, 3, cv2.LINE_AA)
+
+>>>>>>> Stashed changes
             cv2.imshow('image', image)
 
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 #edit this to download image for experimental part of project
 
+<<<<<<< Updated upstream
                 cv2.imwrite('image.jpg', image)
 
                 #print(face_landmarker_result.face_blendshapes)
@@ -120,6 +151,86 @@ class Video:
                 print("response" + str(response))
 
                 break
+=======
+                #cv2.imwrite('image.jpg', image)
+
+                #print(face_landmarker_result.face_blendshapes)
+                #print("\n\n\n")
+                print(face_landmarker_result.face_landmarks)
+                # print(len(face_landmarker_result.face_landmarks))
+
+                l_c_x = int(face_landmarker_result.face_landmarks[0][468].x * 1440)
+                l_c_y = int(face_landmarker_result.face_landmarks[0][468].y * 900)
+                r_c_x = int(face_landmarker_result.face_landmarks[0][473].x * 1440)
+                r_c_y = int(face_landmarker_result.face_landmarks[0][473].y * 900)
+
+                l_l_x = int(face_landmarker_result.face_landmarks[0][469].x * 1440)
+                l_l_y = int(face_landmarker_result.face_landmarks[0][469].y * 900)
+                r_l_x = int(face_landmarker_result.face_landmarks[0][474].x * 1440)
+                r_l_y = int(face_landmarker_result.face_landmarks[0][474].y * 900)
+
+                l_t_x = int(face_landmarker_result.face_landmarks[0][470].x * 1440)
+                l_t_y = int(face_landmarker_result.face_landmarks[0][470].y * 900)
+                r_t_x = int(face_landmarker_result.face_landmarks[0][475].x * 1440)
+                r_t_y = int(face_landmarker_result.face_landmarks[0][475].y * 900)
+
+                l_r_x = int(face_landmarker_result.face_landmarks[0][471].x * 1440)
+                l_r_y = int(face_landmarker_result.face_landmarks[0][471].y * 900)
+                r_r_x = int(face_landmarker_result.face_landmarks[0][476].x * 1440)
+                r_r_y = int(face_landmarker_result.face_landmarks[0][476].y * 900)
+
+                l_b_x = int(face_landmarker_result.face_landmarks[0][472].x * 1440)
+                l_b_y = int(face_landmarker_result.face_landmarks[0][472].y * 900)
+                r_b_x = int(face_landmarker_result.face_landmarks[0][477].x * 1440)
+                r_b_y = int(face_landmarker_result.face_landmarks[0][477].y * 900)
+
+                print(f"Left eye x coordinate is {l_c_x}")
+                print(f"Left eye y coordinate is {l_c_y}")
+                print(f"Right eye x coordinate is {r_c_x}")
+                print(f"Right eye y coordinate is {r_c_y}")
+                #print("\n\n\n")
+                #print(face_landmarker_result.facial_transformation_matrixes)
+                #print(face_landmarker_result.timestampMs)
+
+                frame = np.zeros(shape=[900, 1440, 3], dtype=np.uint8)
+
+                l_c = (l_c_x, l_c_y)
+                r_c = (r_c_x, r_c_y)
+
+                l_l = (l_l_x, l_l_y)
+                r_l = (r_l_x, r_l_y)
+
+                l_t = (l_t_x, l_t_y)
+                r_t = (r_t_x, r_t_y)
+
+                l_r = (l_r_x, l_r_y)
+                r_r = (r_r_x, r_r_y)
+
+                l_b = (l_b_x, l_b_y)
+                r_b = (r_b_x, r_b_y)
+
+                x_color = (255, 255, 255)
+
+                cv2.putText(frame, '.', l_c, font, 1, x_color, 3, cv2.LINE_AA)
+                cv2.putText(frame, '.', r_c, font, 1, x_color, 3, cv2.LINE_AA)
+
+                cv2.putText(frame, '.', l_l, font, 1, x_color, 3, cv2.LINE_AA)
+                cv2.putText(frame, '.', r_l, font, 1, x_color, 3, cv2.LINE_AA)
+
+                cv2.putText(frame, '.', l_t, font, 1, x_color, 3, cv2.LINE_AA)
+                cv2.putText(frame, '.', r_t, font, 1, x_color, 3, cv2.LINE_AA)
+
+                cv2.putText(frame, '.', l_r, font, 1, x_color, 3, cv2.LINE_AA)
+                cv2.putText(frame, '.', r_r, font, 1, x_color, 3, cv2.LINE_AA)
+
+                cv2.putText(frame, '.', l_b, font, 1, x_color, 3, cv2.LINE_AA)
+                cv2.putText(frame, '.', r_b, font, 1, x_color, 3, cv2.LINE_AA)
+
+                cv2.imshow(f'eye frame {num}', frame)
+                num+=1
+
+                # break
+>>>>>>> Stashed changes
 
         cap.release()
         cv2.destroyAllWindows()        

@@ -48,6 +48,7 @@ def draw_landmarks_on_image_body(rgb_image, detection_result):
         landmark_pb2.NormalizedLandmark(x=landmark.x, y=landmark.y, z=landmark.z) for landmark in pose_landmarks
     ])
 
+<<<<<<< Updated upstream
     # for connections, style in [
     #   (mp.solutions.pose.POSE_CONNECTIONS, mp.solutions.drawing_styles.get_default_pose_landmarks_style())
     # ]:
@@ -63,6 +64,18 @@ def draw_landmarks_on_image_body(rgb_image, detection_result):
 
     # for key, value in mp.solutions.drawing_styles.get_default_pose_landmarks_style().items():
     #    print(key, ";", value)
+=======
+  # for connections, style in [
+  #     (mp.solutions.face_mesh.POSE_CONNECTIONS, mp.solutions.drawing_styles.get_default_pose_landmarks_style())
+  # ]:
+  #     solutions.drawing_utils.draw_landmarks(
+  #         image=annotated_image,
+  #         landmark_list=pose_landmarks_proto,
+  #         connections=connections,
+  #         landmark_drawing_spec=None,
+  #         connection_drawing_spec=style
+  #     )
+>>>>>>> Stashed changes
 
     solutions.drawing_utils.draw_landmarks(
         annotated_image,

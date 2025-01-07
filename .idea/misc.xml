@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Black">
+<<<<<<< Updated upstream
     <option name="sdkName" value="Python 3.11" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="Python 3.11" project-jdk-type="Python SDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
+=======
+    <option name="sdkName" value="Python 3.12 (PersonalEyeTracking)" />
+  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.12 (PersonalEyeTracking)" project-jdk-type="Python SDK" />
+>>>>>>> Stashed changes
 </project>
