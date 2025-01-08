@@ -3,12 +3,11 @@ from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
 import cv2
 from functions import *
-<<<<<<< Updated upstream
+
 import json
 import requests
-=======
 import random
->>>>>>> Stashed changes
+
 
 class Video:
     def __init__(self):
@@ -49,17 +48,13 @@ class Video:
 
         #or tune parameters otherwise
 
-<<<<<<< Updated upstream
-=======
         num = 1
 
->>>>>>> Stashed changes
         while cap.isOpened():
             ret, frame = cap.read()
             image = cv2.flip(frame, 1)
             image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
             image = mp.Image(image_format=mp.ImageFormat.SRGB, data=image)
-<<<<<<< Updated upstream
             
             face_landmarker_result = self.face_landmarker.detect(image)
             pose_landmarker_result = self.pose_landmarker.detect(image)
@@ -68,7 +63,6 @@ class Video:
             image2 = draw_landmarks_on_image_body(image.numpy_view(), pose_landmarker_result)
 
             image = cv2.addWeighted(image1, 0.5, image2, 0.5, 0)
-=======
 
             face_landmarker_result = self.face_landmarker.detect(image)
             # pose_landmarker_result = self.pose_landmarker.detect(image)
@@ -78,7 +72,6 @@ class Video:
 
             image = cv2.addWeighted(image1, 0.5, image1, 0.5, 0)
             #instead of image = cv2.addWeighted(image1, 0.5, image2, 0.5, 0)
->>>>>>> Stashed changes
 
             image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
 
@@ -95,27 +88,25 @@ class Video:
             #color = (0, 0, 255)
             #yes_point = (240, 360)
             #no_point = (900, 360)
-<<<<<<< Updated upstream
+
             #font = cv2.FONT_HERSHEY_SIMPLEX
 
             #cv2.putText(image, 'YES', yes_point, font, 3, color, 3, cv2.LINE_AA)
 
             #cv2.putText(image, 'NO', no_point, font, 3, color, 3, cv2.LINE_AA)
             
-=======
+
             font = cv2.FONT_HERSHEY_SIMPLEX
 
             #cv2.putText(image, 'YES', yes_point, font, 3, color, 3, cv2.LINE_AA)
 
             #cv2.putText(image, 'NO', no_point, font, 3, color, 3, cv2.LINE_AA)
 
->>>>>>> Stashed changes
             cv2.imshow('image', image)
 
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 #edit this to download image for experimental part of project
 
-<<<<<<< Updated upstream
                 cv2.imwrite('image.jpg', image)
 
                 #print(face_landmarker_result.face_blendshapes)
@@ -151,7 +142,7 @@ class Video:
                 print("response" + str(response))
 
                 break
-=======
+
                 #cv2.imwrite('image.jpg', image)
 
                 #print(face_landmarker_result.face_blendshapes)
@@ -230,7 +221,6 @@ class Video:
                 num+=1
 
                 # break
->>>>>>> Stashed changes
 
         cap.release()
         cv2.destroyAllWindows()        
