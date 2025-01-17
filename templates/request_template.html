@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+</head>
+<body>
+    <h1>x-coordinate: {{x_coord}}</h1>
+    <h1>y-coordinate: {{y_coord}}</h1>
+
+    <button id="sendCoordinates">Send Coordinates</button>
+
+    <script>
+        // JavaScript to send POST request with Axios
+        document.getElementById('sendCoordinates').addEventListener('click', function() {
+            const x = 100;  // Example coordinate
+            const y = 200;  // Example coordinate
+
+            axios.post('http://localhost:8000/post/', {
+                'x-coordinate': x,
+                'y-coordinate': y
+            })
+            .then(function (response) {
+                console.log('Data sent successfully:', response.data);
+            })
+            .catch(function (error) {
+                console.error('Error sending data:', error);
+            });
+        });
+    </script>
+</body>
+</html>
